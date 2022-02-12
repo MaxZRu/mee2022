@@ -4,7 +4,7 @@
 MaxZ 0:52 This repository can be added as an **extension** in MakeCode.
 
 * Открыть [http://minecraft.makecode.com/#tutorial:https://github.com/maxzru/mee2022]
-
+* Открыть 2 [http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022]
 * open [https://minecraft.makecode.com/](https://minecraft.makecode.com/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu

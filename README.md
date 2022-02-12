@@ -1,15 +1,15 @@
 
-## Use as Extension MaxZ 1:48
+## Use as Extension MaxZ 3:42
 
-MaxZ 1:48 This repository can be added as an **extension** in MakeCode.
+MaxZ 3:42 This repository can be added as an **extension** in MakeCode.
 
-* Открыть [http://minecraft.makecode.com/#tutorial:https://github.com/maxzru/mee2022]
-* Открыть Page01.md [http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01.md]
-* Открыть Page01 [http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01.md]
+* Открыть http://minecraft.makecode.com/#tutorial:https://github.com/maxzru/mee2022
+* Открыть Page01.md http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01.md
+* Открыть Page01 http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01.md
 
-* Открыть 2 [http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022]
-* Открыть Page01 2 [http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01]
-* Открыть Page01.md 2 [http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01.md]
+* Открыть 2 http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022
+* Открыть Page01 2 http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01
+* Открыть Page01.md 2 http://minecraft.makecode.com/#tutorial:github:maxzru/mee2022/tutorial/lesson01/page01.md
 
 ## Edit this project MaxZ 1:48
 

@@ -9,7 +9,8 @@
     "files": [
         "README.md",
         "main.ts",
-        "my-tutorial.md"
+        "my-tutorial.md",
+        "tutorial/lesson01/page01.md"
     ],
     "testFiles": [
         "test.ts"

@@ -1,146 +1,103 @@
-# Linked Walls: Blocks MaxZ 01:42
+# Восстановление забора
 
-## Step 1 MaxZ 01:42
- MaxZ 01:42 Rename the existing ``||player:on chat||`` command into “**position**”.
+## {Introduction @showdialog}
 
-```blocks
-player.onChat("position", function () { 
-     
-}) 
-```
+Учимся строить линию из блоков
 
-## Step 2 MaxZ 01:42
-MaxZ 01:42 Create a ``|||variable:new variable||`` and name it **PlayerPosition**. Then, drag a ``||player:player world position||`` into the “**0**” parameter of the set variable.
+Задача: Построить 4 блока забора
 
-```blocks
-let PlayerPosition: Position = null 
-player.onChat("position", function () { 
-    PlayerPosition = player.position() 
-}) 
-```
 
-## Step 3 MaxZ 01:42
-MaxZ 01:42 Create another ``|||variable: variable||`` and name it **from_position**. Then, drag an ``||positions:+ (add position)||`` block into the “**0**” argument of the set variable. 
+## {Step 2}
 
-Drag this ``||variable:variable||`` into the end of the ``||player:on chat||`` command. Get the **PlayerPosition** ``||variable:variable||`` and drag it into the top set of coordinates in the new **from_position** variable. Set the **bottom** coordinates to (**6**, 0, 0).
+Обеспечим нашего агента материалами, нам нужно 4 блока забора
+---
+Создам блок обеспечения материалов ``||agent.агент ставит блок или предмет (деревянный забор) в количестве (4) штуки в ячейку инвентаря (1) ||``
 
 ```blocks
-let PlayerPosition: Position = null 
-let from_position: Position = null 
-player.onChat("position", function () { 
-    PlayerPosition = player.position() 
-    from_position = positions.add( 
-    player.position(), 
-    pos(6, 0, 0) 
-    ) 
-}) 
+player.onChat("run", function () {
+    agent.setItem(OAK_FENCE, 4, 1)
+})
 ```
+## {Step 3}
 
-## Step 4 MaxZ 01:42 
-MaxZ 01:42 Create another ``|||variable: variable||`` and name it **to_position**. Then, drag an ``||positions:+ (add position)||`` into the “**0**” argument of the set variable.
-
-Drag this ``||variable:variable||`` into the end of the ``||player:on chat||`` command. Get the **PlayerPosition** ``||variable:variable||`` and drag it into the top set of coordinates in the new **to_position** variable. Set the **bottom** coordinates to (**-6, 13, 0**).
+Чтобы удобно было строить разместим нашего агента рядом с забором.
+---
+Добавим блок движения агента ``||agent.агент: переместиться (влево) на (1) блок ||``
 
 ```blocks
-let from_position: Position = null 
-let to_position: Position = null 
-player.onChat("position", function () { 
-    PlayerPosition = player.position() 
-    from_position = positions.add( 
-    player.position(), 
-    pos(6, 0, 0) 
-    ) 
-    to_position = positions.add( 
-    player.position(), 
-    pos(6, 13, 0) 
-    ) 
-}) 
+player.onChat("run", function () {
+    agent.setItem(OAK_FENCE, 4, 1)
+    agent.move(LEFT, 1)
+})
 ```
 
-## Step 5
-Get another ``||player:on chat||`` command and name it “**wall**”.
+## {Step 3}
+
+Нужно построить 4 блока забора - создадим цикл
+---
+Добавим блок цикла  ``||loops.Повторить (4) раза делать||``
 
 ```blocks
-player.onChat("wall", function () { 
- 
-}) 
+player.onChat("run", function () {
+    agent.setItem(OAK_FENCE, 4, 1)
+    agent.move(LEFT, 1)
+    for (let index = 0; index < 4; index++) {
+    }
+})
 ```
 
-## Step 6
-Insert a ``||blocks:fill with||`` block and set it to **Glass**. Take the  **from_position** ``||variable:variable||`` and drag it into the **from** argument of the **Glass** ``||blocks:fill||`` command. Also, take the  **to_position** ``||variable:variable||`` and drag it into the **to** argument of the **Glass** ``||blocks:fill||`` command. 
+## {Step 4}
+
+Разметим блок справа от Агента
+---
+Добавим блок размещения  ``||agent.Разметить (вправо)||``
 
 ```blocks
-player.onChat("wall", function () { 
-    blocks.fill( 
-    GLASS, 
-    from_position, 
-    to_position, 
-    FillOperation.Replace 
-    ) 
-}) 
+player.onChat("run", function () {
+    agent.setItem(OAK_FENCE, 4, 1)
+    agent.move(LEFT, 1)
+    for (let index = 0; index < 4; index++) {
+        agent.place(RIGHT)    
+    }
+})
 ```
 
-## Step 7
-Get an ``||blocks: on block broken||`` command, set it to **Glass**. Insert a ``||blocks:place||`` block and set to **Diamond**. Drag a ``||positions:pick random position||`` block into the **at** argument of the **Diamond** ``||blocks:place||`` block. Get the **from_position** variable and drag it into the **from** argument of the **Diamond** ``||blocks:place||`` block. Get the variable **to_position** and drag it into the **to** argument of the **Diamond** ``||blocks:place||`` block.
+## {Step 5}
+
+Двигаемся вперед
+---
+Добавим блок движения агента  ``||agent.переместиться (вперед) на (1) блок||``
 
 ```blocks
-blocks.onBlockBroken(AIR, function () { 
-    blocks.place(DIAMOND_BLOCK, randpos( 
-    from_position, 
-    to_position 
-    )) 
-}) 
+player.onChat("run", function () {
+    agent.setItem(OAK_FENCE, 4, 1)
+    agent.move(LEFT, 1)
+    for (let index = 0; index < 4; index++) {
+        agent.place(RIGHT)    
+        agent.move(FORWARD, 1)
+    }
+})
 ```
 
-## Step 8
-Duplicate the ``||blocks:on block broken||`` block structure. Change the **Glass** to **Diamond** and the **Diamond** ``||blocks:place||`` block to **Orange Wool**.
+## {Congrats}
+
+Програму мы закончили нужное её запустить и в консоли выполнить команту **run**
+
+## {Finale}
+
+Тестируйте нажмите ">" и в консоли **run**
+
 
 ```blocks
-blocks.onBlockBroken(DIAMOND_BLOCK, function () { 
-    blocks.place(ORANGE_WOOL, randpos( 
-    from_position, 
-    to_position 
-    )) 
-}) 
+player.onChat("run", function () {
+    agent.setItem(OAK_FENCE, 4, 1)
+    agent.move(LEFT, 1)
+    for (let index = 0; index < 4; index++) {
+        agent.place(RIGHT)
+        agent.move(FORWARD, 1)
+    }
+})
+
 ```
 
-## Step 9
-Press the **Play** button, go into Minecraft and test out all the events. Start with **position**, then **wall**. Break a **glass block** and see what happens.
-
-```blocks
-let from_position: Position = null 
-let to_position: Position = null 
-let PlayerPosition: Position = null 
-blocks.onBlockBroken(AIR, function () { 
-    blocks.place(DIAMOND_BLOCK, randpos( 
-    from_position, 
-    to_position 
-    )) 
-}) 
-player.onChat("wall", function () { 
-    blocks.fill( 
-    GLASS, 
-    from_position, 
-    to_position, 
-    FillOperation.Replace 
-    ) 
-}) 
-player.onChat("position", function () { 
-    PlayerPosition = player.position() 
-    from_position = positions.add( 
-    player.position(), 
-    pos(6, 0, 0) 
-    ) 
-    to_position = positions.add( 
-    player.position(), 
-    pos(6, 13, 0) 
-    ) 
-}) 
-blocks.onBlockBroken(DIAMOND_BLOCK, function () { 
-    blocks.place(ORANGE_WOOL, randpos( 
-    from_position, 
-    to_position 
-    )) 
-}) 
-```
 
